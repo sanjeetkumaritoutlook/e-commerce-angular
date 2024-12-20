@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable,of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,27 @@ export class ProductService {
       return this.http.get<any[]>(this.apiUrl);
     }
   // Method to fetch a product by its ID- used in another component
+  // getProductById(id: string): Observable<any> {
+  //   return this.http.get<any>(`${this.apiUrl}/${id}`);
+  // } 
   getProductById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
-  } 
+    return of({
+      id:1,
+      name: 'Mock Product',
+      image: 'https://picsum.photos/200/300?random=1',
+      description: 'This is a mock product description.'
+    },
+    {
+      id:2,
+      name: 'Mock Product 2',
+      image: 'https://picsum.photos/200/300?random=2',
+      description: 'This is a mock product description.'
+    },
+    {
+      id:3,
+      name: 'Mock Product 3',
+      image: 'https://picsum.photos/200/300?random=3',
+      description: 'This is a mock product description.'
+    });
+  }
 }

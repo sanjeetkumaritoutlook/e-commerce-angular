@@ -18,7 +18,7 @@ export class ProductdetailComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    // Get the product ID from the route parameters
+    // Get the product ID or category ID  from the route parameters
     const productId = this.route.snapshot.paramMap.get('id');
     if (productId) {
       // Fetch product details by ID

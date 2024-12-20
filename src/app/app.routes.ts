@@ -9,7 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 export const routes: Routes = [
     { path: '', component: HomepageComponent },  // Default route to load HomePageComponent first
-    { path: 'product/:id', component: ProductdetailComponent },  // Route for product detail page
+    { path: 'category/:id', component: ProductdetailComponent },  // Route for product detail page
     // Other routes...
     { path: 'cart', component: CartComponent },  // Route for the cart page
     { path: 'user-profile', component: UserprofileComponent },  // Route to UserProfileComponent
