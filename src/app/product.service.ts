@@ -22,23 +22,27 @@ export class ProductService {
   //   return this.http.get<any>(`${this.apiUrl}/${id}`);
   // } 
   getProductById(id: string): Observable<any> {
-    return of({
-      id:1,
-      name: 'Mock Product',
+    const mockProducts = [
+    {  
+      id:'1',
+      name: 'Mock Product 1',
       image: 'https://picsum.photos/200/300?random=1',
       description: 'This is a mock product description.'
     },
     {
-      id:2,
+      id:'2',
       name: 'Mock Product 2',
       image: 'https://picsum.photos/200/300?random=2',
       description: 'This is a mock product description.'
     },
     {
-      id:3,
+      id:'3',
       name: 'Mock Product 3',
-      image: 'https://picsum.photos/200/300?random=3',
+      image: 'https://picsum.photos/200/300?random=',
       description: 'This is a mock product description.'
-    });
-  }
+    }
+  ];
+  const product = mockProducts.find(product => product.id === id); // Find the product
+  return of(product); // Return as an Observable
+}
 }
