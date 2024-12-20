@@ -24,12 +24,15 @@ export class CartService {
       existingItem.quantity += item.quantity;  // If the item already exists, increase its quantity
     } else {
       this.cart.push(item);  // Otherwise, add the new item to the cart
+      localStorage.setItem('cart', JSON.stringify(this.cart)); // Save to localStorage
     }
   }
 
   // Optionally, you could add more methods like getCartItems() to retrieve the cart
  // Method to get the current cart items
  getCartItems(): any[] {
+  const savedCart = localStorage.getItem('cart');
+  this.cart = savedCart ? JSON.parse(savedCart) : [];
   return this.cart;  // Return the current cart items
 }
   // Method to remove an item from the cart
@@ -37,6 +40,7 @@ export class CartService {
     const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
     if (index !== -1) {
       this.cart.splice(index, 1);  // Remove the item from the cart array
+      localStorage.setItem('cart', JSON.stringify(this.cart)); // Update localStorage
     }
   }
 }

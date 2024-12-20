@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class UserService {
 
   private apiUrl = 'https://jsonplaceholder.typicode.com/posts?q=1';  // Replace with actual API URL
+  private apiUrl2 = 'https://jsonplaceholder.typicode.com/posts'; // Sample public API
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +19,7 @@ export class UserService {
 
   // Update the user profile data
   updateUserProfile(userData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/profile`, userData);  // Adjust API endpoint as needed
+    // return this.http.put<any>(`${this.apiUrl}/profile`, userData);  // Adjust API endpoint as needed
+    return this.http.post(this.apiUrl2, userData);
   }
 }

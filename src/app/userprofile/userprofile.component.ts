@@ -31,13 +31,21 @@ export class UserprofileComponent implements OnInit{
       phone: ['', [Validators.pattern(/^[0-9]{10}$/)]],
       address: ['']
     });
+   
   }
 
   // Load the user's profile data from the backend
   loadUserProfile(): void {
     this.userService.getUserProfile().subscribe(
       (data) => {
-        this.user = data;  // Store the fetched data in the user variable
+        // this.user = data;  // Store the fetched data in the user variable
+         // Simulating fetching user data; replace with actual service call
+    data = {
+      name: 'John Doe',
+      email: 'john.doe@example.com',
+      phone: '1234567890',
+      address: '123 Main St, Cityville'
+    };
         this.userProfileForm.patchValue(data);  // Patch the form with the fetched user data
       },
       (error) => {

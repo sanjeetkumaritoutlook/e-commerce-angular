@@ -45,11 +45,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          path: ./dist/e-commerce-angular
+          path: ./dist/e-commerce-angular/browser
     
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/e-commerce-angular
+          publish_dir: ./dist/e-commerce-angular/browser
       

@@ -27,19 +27,25 @@ export class ProductService {
       id:'1',
       name: 'Mock Product 1',
       image: 'https://picsum.photos/200/300?random=1',
-      description: 'This is a mock product description.'
+      description: 'This is a mock product description.',
+      price:'300',
+      quantity:'1'
     },
     {
       id:'2',
       name: 'Mock Product 2',
       image: 'https://picsum.photos/200/300?random=2',
-      description: 'This is a mock product description.'
+      description: 'This is a mock product description.',
+      price:'400',
+      quantity:'5'
     },
     {
       id:'3',
       name: 'Mock Product 3',
       image: 'https://picsum.photos/200/300?random=',
-      description: 'This is a mock product description.'
+      description: 'This is a mock product description.',
+      price:'500',
+      quantity:'7'
     }
   ];
   const product = mockProducts.find(product => product.id === id); // Find the product
