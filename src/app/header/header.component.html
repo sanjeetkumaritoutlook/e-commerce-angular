@@ -1,0 +1,13 @@
+<header>
+    <!-- Logo with routing -->
+    <a routerLink="/">Logo</a>
+      <!-- Search input and suggestions -->
+    <input type="text" [(ngModel)]="searchQuery" (keyup.enter)="search()" (input)="onSearch()">
+    <ul *ngIf="suggestions.length > 0">
+      <li *ngFor="let suggestion of suggestions" (click)="search()">{{ suggestion }}</li>
+    </ul>
+      <!-- Cart and Wishlist links -->
+    <a routerLink="/cart">Cart ({{ cartCount }})</a>
+    <a routerLink="/wishlist">Wishlist</a>
+  </header>
+  

@@ -1,0 +1,25 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
+    <input formControlName="name" placeholder="Full Name">
+    <input formControlName="address" placeholder="Address">
+    <button type="submit" [disabled]="checkoutForm.invalid">Place Order</button>
+  </form>
+  
+  <!--display validation messages when the form fields are invalid, you can add validation feedback -->
+  <!--
+  <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
+  <input formControlName="name" placeholder="Full Name">
+  <div *ngIf="checkoutForm.get('name')?.invalid && checkoutForm.get('name')?.touched">
+    <small *ngIf="checkoutForm.get('name')?.hasError('required')">Name is required</small>
+    <small *ngIf="checkoutForm.get('name')?.hasError('minlength')">Name should be at least 3 characters long</small>
+  </div>
+
+  <input formControlName="address" placeholder="Address">
+  <div *ngIf="checkoutForm.get('address')?.invalid && checkoutForm.get('address')?.touched">
+    <small *ngIf="checkoutForm.get('address')?.hasError('required')">Address is required</small>
+    <small *ngIf="checkoutForm.get('address')?.hasError('minlength')">Address should be at least 5 characters long</small>
+  </div>
+
+  <button type="submit" [disabled]="checkoutForm.invalid">Place Order</button>
+</form>
+
+  -->

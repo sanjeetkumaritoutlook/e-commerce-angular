@@ -1,0 +1,35 @@
+<form [formGroup]="userProfileForm" (ngSubmit)="updateUserProfile()">
+    <div>
+      <label for="name">Full Name:</label>
+      <input id="name" formControlName="name" placeholder="Full Name">
+      <div *ngIf="userProfileForm.get('name')?.invalid && userProfileForm.get('name')?.touched">
+        <small *ngIf="userProfileForm.get('name')?.hasError('required')">Name is required</small>
+        <small *ngIf="userProfileForm.get('name')?.hasError('minlength')">Name must be at least 3 characters long</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" placeholder="Email">
+      <div *ngIf="userProfileForm.get('email')?.invalid && userProfileForm.get('email')?.touched">
+        <small *ngIf="userProfileForm.get('email')?.hasError('required')">Email is required</small>
+        <small *ngIf="userProfileForm.get('email')?.hasError('email')">Please enter a valid email</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="phone">Phone:</label>
+      <input id="phone" formControlName="phone" placeholder="Phone" type="tel">
+      <div *ngIf="userProfileForm.get('phone')?.invalid && userProfileForm.get('phone')?.touched">
+        <small *ngIf="userProfileForm.get('phone')?.hasError('pattern')">Please enter a valid phone number</small>
+      </div>
+    </div>
+  
+    <div>
+      <label for="address">Address:</label>
+      <input id="address" formControlName="address" placeholder="Address">
+    </div>
+  
+    <button type="submit" [disabled]="userProfileForm.invalid">Update Profile</button>
+  </form>
+  
