@@ -1,0 +1,9 @@
+.footer-links {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgreen;
+    color: #fff;
+    text-align: center;
+    z-index:-1;
+  }

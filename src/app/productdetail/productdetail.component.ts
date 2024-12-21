@@ -2,11 +2,11 @@ import { Component , OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service';
 import { CartService } from '../cart.service';
-import { Router,RouterOutlet,RouterModule } from '@angular/router';
+import { Router,RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-productdetail',
-  imports: [RouterOutlet,RouterModule],
+  imports: [RouterModule],
   templateUrl: './productdetail.component.html',
   styleUrl: './productdetail.component.css'
 })
