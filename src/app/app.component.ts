@@ -17,4 +17,7 @@ export class AppComponent implements OnInit {
   navigatetoUserprofile(): void {
     this.router.navigate(['/user-profile']);
   }
+  navigatetoCart(): void {
+    this.router.navigate(['/cart']);
+  }
 }
