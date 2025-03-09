@@ -40,7 +40,7 @@ jobs:
    #GitHub Pages doesn't support fallback routing for Single Page Applications (SPA).
       - name: Build Angular app
         run: npm run build -- --base-href=/e-commerce-angular/
-
+    #Save Build Artifact
       - name: Upload build artifacts
         uses: actions/upload-pages-artifact@v3
         with:
@@ -52,4 +52,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/e-commerce-angular/browser
-      
+
+
+  rollback:
+      runs-on: ubuntu-latest
+      needs: deploy  # Rollback only if deploy fails
+      if: failure()   # This triggers rollback if deployment fails
+        
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+  
+        - name: Restore Last Successful Build
+          uses: actions/download-artifact@v4
+          with:
+            name: last-successful-build
+            path: ./dist/e-commerce-angular/browser
+  
+        - name: Deploy Last Successful Build
+          uses: actions/deploy-pages@v4
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./dist/e-commerce-angular/browser      
+
