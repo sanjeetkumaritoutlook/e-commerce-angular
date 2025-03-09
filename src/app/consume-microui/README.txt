@@ -21,3 +21,21 @@ Why This Works
 ✅ userData is now properly defined as an object with form fields.
 ✅ Prevents errors when binding formData in HTML.
 ✅ Ensures unsaved changes detection works correctly.
+
+ Now, when you try to navigate away:
+If there are unsaved changes, a modal will automatically pop up.
+If you click "OK", it will navigate away.
+If you click "Cancel", it will stay on the current page.
+This ensures a seamless user experience without an explicit button.
+
+ What This Does
+The [formData] input binds userData from Angular to the web component.
+The (formSubmitted) event captures the submitted form data.
+#opportunityForm reference is used in ViewChild to detect changes inside the web component.
+
+
+ Final Result
+✅ Unsaved changes are detected when the user types in the Web Component.
+✅ When navigating away, a modal appears asking for confirmation.
+✅ If OK is clicked, navigation happens automatically.
+✅ If Cancel is clicked, the user remains on the page.

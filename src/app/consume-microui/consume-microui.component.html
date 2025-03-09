@@ -2,12 +2,11 @@
 [formData]="userData"
 (formSubmitted)="handleFormSubmit($event)">
 </microui-form>
-<button (click)="attemptNavigation()">Go to Another Page</button>
-<!-- Confirmation Modal -->
-<div *ngIf="showModal" class="modal">
-    <div class="modal-content">
-      <p>You have unsaved changes. Do you want to discard them?</p>
-      <button (click)="confirmNavigation(true)">Discard Changes</button>
-      <button (click)="confirmNavigation(false)">Cancel</button>
-    </div>
-  </div>
+<!-- Unsaved Changes Modal -->
+<dialog id="unsavedChangesModal">
+    <form method="dialog">
+      <p>You have unsaved changes! Do you really want to leave?</p>
+      <button id="confirmExit">OK</button>
+      <button id="cancelExit">Cancel</button>
+    </form>
+  </dialog>

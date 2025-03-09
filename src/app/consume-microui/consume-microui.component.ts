@@ -1,5 +1,4 @@
-import { Component ,OnInit, ViewChild, CUSTOM_ELEMENTS_SCHEMA, inject,AfterViewInit,ElementRef  } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component , ViewChild, CUSTOM_ELEMENTS_SCHEMA, inject,AfterViewInit,ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 @Component({
@@ -24,25 +23,7 @@ export class ConsumeMicrouiComponent implements AfterViewInit  {
   unsavedChanges: boolean = false;
   showModal: boolean = false; // Controls the confirmation modal
   router = inject(Router);
-
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit() {
-  //   this.userForm = this.fb.group({
-  //     firstName: [''],
-  //     lastName: [''],
-  //     dob: [''],
-  //     city: [''],
-  //     country: [''],
-  //     nationality: ['']
-  //   });
-
-    // Detect changes in the form
-    // this.userForm.valueChanges.subscribe(() => {
-    //   this.unsavedChanges = true;
-    // });
-  }
-
+  
   ngAfterViewInit() {
     // Detect changes inside the Web Component's Form
     setTimeout(() => {
@@ -59,21 +40,33 @@ export class ConsumeMicrouiComponent implements AfterViewInit  {
     this.unsavedChanges = false; // Reset unsaved changes flag
   }
 
-  // Function to attempt navigation
-  attemptNavigation() {
+
+  async canDeactivate(): Promise<boolean> {
     if (this.unsavedChanges) {
-      this.showModal = true; // Show confirmation modal
-    } else {
-      this.router.navigate(['/user-profile']); // Allow navigation
+      const confirmation = await this.showUnsavedChangesModal();
+      return confirmation;
     }
+    return true;
   }
 
-  // Handle user's choice from the modal
-  confirmNavigation(discardChanges: boolean) {
-    if (discardChanges) {
-      this.unsavedChanges = false;
-      this.router.navigate(['/user-profile']);
-    }
-    this.showModal = false; // Close modal
+  showUnsavedChangesModal(): Promise<boolean> {
+    return new Promise((resolve) => {
+      const modal = document.getElementById('unsavedChangesModal') as HTMLDialogElement;
+      if (modal) {
+        modal.showModal();
+
+        document.getElementById('confirmExit')?.addEventListener('click', () => {
+          modal.close();
+          resolve(true);
+        });
+
+        document.getElementById('cancelExit')?.addEventListener('click', () => {
+          modal.close();
+          resolve(false);
+        });
+      } else {
+        resolve(true);
+      }
+    });
   }
 }
