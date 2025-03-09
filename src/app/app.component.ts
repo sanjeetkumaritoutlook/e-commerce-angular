@@ -23,4 +23,7 @@ export class AppComponent implements OnInit {
   consumeWebComponent(): void {
     this.router.navigate(['/consume-external']);
   }
+  consumeMicroUI(): void {
+    this.router.navigate(['/consume-microui']);
+  }
 }
