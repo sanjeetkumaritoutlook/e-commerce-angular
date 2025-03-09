@@ -8,6 +8,7 @@ import { TermsComponent } from './terms/terms.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ConsumeExternalComponent } from './consume-external/consume-external.component';
 export const routes: Routes = [
     { path: '', component: HomepageComponent },  // Default route to load HomePageComponent first
     { path: 'category/:id', component: ProductdetailComponent },  // Route for product detail page
@@ -17,7 +18,8 @@ export const routes: Routes = [
     { path: 'order-history', component: OrderhistoryComponent },  // Route to OrderHistoryComponent
     { path: 'terms', component: TermsComponent },  // Route to TermsComponent
     { path: 'contact', component: ContactComponent },  // Route to ContactComponent
-    { path: 'checkout', component: CheckoutComponent },     // Route to CheckoutComponent  
+    { path: 'checkout', component: CheckoutComponent },  
+    { path: 'consume-external', component: ConsumeExternalComponent },     // Route to CheckoutComponent  
     { path: '**', component: NotfoundComponent }  // Wildcard route for unmatched paths // Fallback route should be atlast
     //Routes are matched in the order they are defined!
 ];

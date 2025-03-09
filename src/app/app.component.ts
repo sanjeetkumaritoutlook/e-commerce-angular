@@ -20,4 +20,7 @@ export class AppComponent implements OnInit {
   navigatetoCart(): void {
     this.router.navigate(['/cart']);
   }
+  consumeWebComponent(): void {
+    this.router.navigate(['/consume-external']);
+  }
 }
