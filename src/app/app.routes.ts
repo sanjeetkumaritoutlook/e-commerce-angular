@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ConsumeExternalComponent } from './consume-external/consume-external.component';
 import { ConsumeMicrouiComponent } from './consume-microui/consume-microui.component';
+import { canExitGuard } from './guards/can-exit.guard';
 export const routes: Routes = [
     { path: '', component: HomepageComponent },  // Default route to load HomePageComponent first
     { path: 'category/:id', component: ProductdetailComponent },  // Route for product detail page
@@ -21,7 +22,9 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },  // Route to ContactComponent
     { path: 'checkout', component: CheckoutComponent },      // Route to CheckoutComponent 
     { path: 'consume-external', component: ConsumeExternalComponent }, 
-    { path: 'consume-microui', component: ConsumeMicrouiComponent }, 
+    { path: 'consume-microui',
+      component: ConsumeMicrouiComponent,
+      canDeactivate: [canExitGuard] }, 
     { path: '**', component: NotfoundComponent }  // Wildcard route for unmatched paths // Fallback route should be atlast
     //Routes are matched in the order they are defined!
 ];

@@ -1,1 +1,13 @@
-<microui-form [formData]="userData" (formSubmitted)="handleFormSubmit($event)"></microui-form>
+<microui-form #opportunityForm
+[formData]="userData"
+(formSubmitted)="handleFormSubmit($event)">
+</microui-form>
+<button (click)="attemptNavigation()">Go to Another Page</button>
+<!-- Confirmation Modal -->
+<div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <p>You have unsaved changes. Do you want to discard them?</p>
+      <button (click)="confirmNavigation(true)">Discard Changes</button>
+      <button (click)="confirmNavigation(false)">Cancel</button>
+    </div>
+  </div>
